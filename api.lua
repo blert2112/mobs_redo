@@ -2105,7 +2105,9 @@ local mob_step = function(self, dtime)
 
 	-- run custom function (defined in mob lua file)
 	if self.do_custom then
-		self.do_custom(self, dtime)
+		if self.do_custom(self, dtime) == false then
+			return
+		end
 	end
 
 	-- attack timer
